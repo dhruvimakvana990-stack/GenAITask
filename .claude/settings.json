@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import tensorflow; print\\('TF', tensorflow.__version__\\)\")",
+      "Bash(python3 -c \"import torch; print\\('Torch', torch.__version__\\)\")",
+      "Bash(python3 -c \"import numpy; print\\('numpy', numpy.__version__\\)\")",
+      "Bash(curl -sS --max-time 10 -o /dev/null -w \"%{http_code}\" https://www.gutenberg.org/files/100/100-0.txt)",
+      "Bash(pip3 --version)",
+      "Bash(pip3 download *)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"import tensorflow as tf; print\\('TF', tf.__version__\\)\")",
+      "Bash(mkdir -p data)",
+      "Bash(curl -sS --max-time 120 -o data/shakespeare.txt https://www.gutenberg.org/files/100/100-0.txt)",
+      "Bash(python3 -m venv .venv)",
+      "Bash(.venv/bin/pip install *)",
+      "Bash(.venv/bin/python -c \"import tensorflow as tf; print\\('TF', tf.__version__\\)\")",
+      "Bash(mkdir -p src outputs models && ls)",
+      "Bash(chmod +x run_train.sh)",
+      "Bash(./run_train.sh)",
+      "Bash(.venv/bin/pip freeze *)",
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(ps -eo pid,etime,%cpu,cmd)",
+      "Bash(export TF_CPP_MIN_LOG_LEVEL=3 TF_ENABLE_ONEDNN_OPTS=0)",
+      "Bash(.venv/bin/python main.py generate --seed 'to be or not to be' --seed 'shall i compare thee to a summer' --seed 'all the world is a stage' --seed 'now is the winter of our discontent')",
+      "Bash(chmod +x run_train_proper.sh)",
+      "Bash(./run_train_proper.sh)",
+      "Bash(pkill -f \"main.py train\")",
+      "Bash(pkill -9 -f \"main.py train\")",
+      "Bash(pkill -9 -f \"run_train_proper\")",
+      "Bash(ps -eo pid,cmd)"
+    ],
+    "additionalDirectories": [
+      "/home/growlt167/GenAITask"
+    ]
+  }
+}
