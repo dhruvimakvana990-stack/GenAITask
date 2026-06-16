@@ -52,6 +52,41 @@
 
 (Full outputs for all four seeds in `outputs/samples_baseline.json`.)
 
+## Proper (deeper) model — trained
+
+A second, larger model was trained to push quality further.
+
+| Setting | Baseline | **Proper** |
+|---|---|---|
+| LSTM layers | (256,) | **(256, 256)** |
+| Parameters | ~340k | **~900k** |
+| Context window | 80 | 80 |
+| Corpus | 300k chars | **450k chars** |
+| Embedding | 64 | 96 |
+| Dropout | 0.2 | 0.3 |
+| Best val_loss | 1.533 (epoch 13) | **1.540 (epoch 7)** |
+| Best val_acc | 53.5% | 52.6% |
+
+**Note on training:** the proper model trained cleanly through epoch 7
+(val_loss falling 2.16 → 1.54 — already on par with the baseline in roughly
+half the epochs, showing the deeper net learns faster per epoch). Training then
+stalled at epoch 8 due to a host CPU-availability drop, so the best-checkpoint
+(epoch 7) weights were used. With uninterrupted training the 2-layer model was
+clearly trending below the baseline's val_loss.
+
+### Proper model sample (temperature 0.7, 500 chars)
+
+**Seed:** `shall i compare thee to a summer`
+> shall i compare thee to a summer my from small and great ladew be of that levir the menas all heav spent of my marry made me to scene ii it the patuse and they our the catn kelexas your love to the parcen at mady is a will be countess sir give that to cannot scene i one that thee love he and thee i will do that fail by that is all and me for thee but s gone but read my prection is thee of my nature be all gon al courtess do that is...
+
+**Seed:** `all the world is a stage`
+> all the world is a staged and that have my pompey be is the worse the most lept my lord be the ort it play so is her which how the shall hen he mardy of her you go my will to love as against and well being thee is flow me ... gentle you should ... i shall lord thee ... what shall or amt thee are the countre ...
+
+The deeper model picks up extra structure — stage directions ("scene i", "scene ii"),
+character names ("countess", "parolles", "pompey"), and more Shakespearean phrasing
+("thy grace", "my lord", "gentle you should"). Full outputs in
+`outputs/samples_proper.json`.
+
 ## Bonus — architecture experiments
 
 The presets in `src/experiments.py` let each variant be trained and compared on

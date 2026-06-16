@@ -27,7 +27,10 @@
       "Bash(pkill -f \"main.py train\")",
       "Bash(pkill -9 -f \"main.py train\")",
       "Bash(pkill -9 -f \"run_train_proper\")",
-      "Bash(ps -eo pid,cmd)"
+      "Bash(ps -eo pid,cmd)",
+      "Bash(ps -eo pid,etime,%cpu,%mem,rss,cmd)",
+      "Bash(kill -9 430781)",
+      "Bash(.venv/bin/python main.py generate --experiment proper --seed 'to be or not to be' --seed 'shall i compare thee to a summer' --seed 'all the world is a stage' --seed 'now is the winter of our discontent')"
     ],
     "additionalDirectories": [
       "/home/growlt167/GenAITask"
